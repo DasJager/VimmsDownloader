@@ -103,7 +103,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 **Donations**
 
 
-    if you like my work or this tool has been helpful to you buy me a beer 
+    if you like my work or this tool has been helpful to you buy me a coffe/beer
 **    my wallet address **
 
 
