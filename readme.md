@@ -7,7 +7,13 @@ Real-time updates on the status of downloads.
 Records completed downloads with associated filenames.
 Uses Flask-SocketIO for real-time communication between the server and clients.
 Uses Selenium WebDriver for browser automation.
+
+
+
 Installation:
+
+
+
 Prerequisites:
 Apache web service 
 mysql database 
@@ -35,28 +41,27 @@ CREATE TABLE completed_urls (
 Clone the Repository
 
 
-Copy code
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
-cd YOUR_REPOSITORY_NAME
+
+git clone https://github.com/DasJager/VimmsDownloader.git
+cd VimmsDownloader
 Set up a Virtual Environment:
 
-Copy code
+
 pip install virtualenv
 virtualenv venv
 source venv/bin/activate  # On Windows use: .\venv\Scripts\activate
 Install Required Packages:
 
 
-Copy code
 pip install -r requirements.txt
 Set up the Database:
 Make sure you have MySQL installed and running. Then create the necessary tables using the provided SQL script.
 
 Run the Server:
 
-bash
-Copy code
+
 python main.py  # Or however you named your main server script
+
 Usage:
 Navigate to http://localhost:5000/ in your browser.
 Add URLs (one per line, up to 40 URLs) to the queue.
