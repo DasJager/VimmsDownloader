@@ -17,11 +17,12 @@ A Flask-based server application that interfaces with a Selenium WebDriver to au
 
 **Prerequisites:**
 
-Apache web service
+Apache web service - not needed if you just intend to use the server to send static files 
 
-MySQL database
+MySQL database - I recommend Xampp as it is the easiest to use and this is not a production environment https://www.apachefriends.org/
 
-Python 3.x
+[Python 3.x](https://www.python.org/downloads/)
+
 
 Chrome WebDriver - Chrome is already included as this is a some what stand alone package
 
@@ -81,7 +82,11 @@ Navigate to http://localhost:5000/ in your browser.
 Add URLs (one per line, up to 40 URLs) to the queue.
 Press the "Start Download" button to initiate the download process.
 Monitor the progress on the web interface.
-Contributing:
+
+
+**Contributing:**
+
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 **License:**
