@@ -92,18 +92,18 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 **License:**
 
 
-[MIT]([url](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/)
 
 
 
-
+![how to use](https://github.com/DasJager/VimmsDownloader/blob/46aca0b5e17513f976c033a950d6e4c4cca94016/how-to-use-VimmDownloader.gif)
 
 
 
 **Donations**
 
 
-    if you like my work or this tool has been helpful to you buy me a beer 
+    if you like my work or this tool has been helpful to you buy me a coffe/beer
 **    my wallet address **
 
 
