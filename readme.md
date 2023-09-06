@@ -2,16 +2,27 @@
 A Flask-based server application that interfaces with a Selenium WebDriver to automate downloading tasks from Vimm's Lair. The application maintains a queue of URLs and a record of completed downloads.
 
 **Features:**
+
 **Web Interface:** Easily add URLs to a download queue.
+
 **Real-time Updates:** Monitor the status of ongoing downloads in real-time.
+
 **Record Keeping:** Keep track of completed downloads with associated filenames.
+
 **Real-time Communication:** Utilizes Flask-SocketIO for real-time communication between the server and clients.
+
 **Automation:** Uses Selenium WebDriver for browser automation.
+
 **Installation:**
+
 **Prerequisites:**
+
 Apache web service
+
 MySQL database
+
 Python 3.x
+
 Chrome WebDriver
 
 **Steps:**
@@ -45,12 +56,12 @@ CREATE TABLE completed_urls (
     pip install -r requirements.txt
 
 
-5.Set up the Database: Make sure you have MySQL installed and running. Then create the necessary tables using the provided SQL script provided in step 1.
+**5.Set up the Database:** Make sure you have MySQL installed and running. Then create the necessary tables using the provided SQL script provided in step 1.
 
-6.Run the Server:
+**6.Run the Server:**
 python app.py  # Or however you named your app server script
 
-Usage:
+**Usage:**
 Navigate to http://localhost:5000/ in your browser.
 Add URLs (one per line, up to 40 URLs) to the queue.
 Press the "Start Download" button to initiate the download process.
@@ -58,6 +69,6 @@ Monitor the progress on the web interface.
 Contributing:
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-License:
+**License:**
 [MIT]([url](https://choosealicense.com/licenses/mit/)https://choosealicense.com/licenses/mit/)
 
