@@ -30,7 +30,7 @@ Chrome WebDriver - Chrome is already included as this is a some what stand alone
 
 **1. Create the Database & Tables:
 **
-
+![create database](https://github.com/DasJager/VimmsDownloader/blob/36e20bbf334442b7aabae68fde761cd7b2a2ce08/createdatabase.gif)
 
 CREATE DATABASE queue;
 
