@@ -1,23 +1,23 @@
-Vimm's Lair Downloader Queue Server
+**Vimm's Lair Downloader Queue Server**
 A Flask-based server application that interfaces with a Selenium WebDriver to automate downloading tasks from Vimm's Lair. The application maintains a queue of URLs and a record of completed downloads.
 
-Features:
-Web Interface: Easily add URLs to a download queue.
-Real-time Updates: Monitor the status of ongoing downloads in real-time.
-Record Keeping: Keep track of completed downloads with associated filenames.
-Real-time Communication: Utilizes Flask-SocketIO for real-time communication between the server and clients.
-Automation: Uses Selenium WebDriver for browser automation.
-Installation:
-Prerequisites:
+**Features:**
+**Web Interface:** Easily add URLs to a download queue.
+**Real-time Updates:** Monitor the status of ongoing downloads in real-time.
+**Record Keeping:** Keep track of completed downloads with associated filenames.
+**Real-time Communication:** Utilizes Flask-SocketIO for real-time communication between the server and clients.
+**Automation:** Uses Selenium WebDriver for browser automation.
+**Installation:**
+**Prerequisites:**
 Apache web service
 MySQL database
 Python 3.x
 Chrome WebDriver
 
-Steps:
+**Steps:**
 
-1. Create the Database & Tables:
-
+**1. Create the Database & Tables:
+**
 CREATE DATABASE queue;
 
 USE queue;
@@ -34,14 +34,14 @@ CREATE TABLE completed_urls (
 );
 
 
-2. Clone the Repository:
+**2. Clone the Repository:**
     git clone https://github.com/DasJager/VimmsDownloader.git
     cd VimmsDownloader
 
-3. Set up a Virtual Environment:
+**3. Set up a Virtual Environment:**
 
 
-4.Install Required Packages:
+**4.Install Required Packages:**
     pip install -r requirements.txt
 
 
@@ -50,4 +50,14 @@ CREATE TABLE completed_urls (
 6.Run the Server:
 python app.py  # Or however you named your app server script
 
+Usage:
+Navigate to http://localhost:5000/ in your browser.
+Add URLs (one per line, up to 40 URLs) to the queue.
+Press the "Start Download" button to initiate the download process.
+Monitor the progress on the web interface.
+Contributing:
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+License:
+[MIT]([url](https://choosealicense.com/licenses/mit/)https://choosealicense.com/licenses/mit/)
 
