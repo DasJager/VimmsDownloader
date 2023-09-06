@@ -96,7 +96,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 
 
-
+![how to use](https://github.com/DasJager/VimmsDownloader/blob/46aca0b5e17513f976c033a950d6e4c4cca94016/how-to-use-VimmDownloader.gif)
 
 
 
