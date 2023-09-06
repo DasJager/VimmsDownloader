@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Downloader Queue Vimm's Lair Test Server</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Basic styling for the form and input fields */
+    form {
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      margin-bottom: 10px;
+    }
+
+    /* Custom styling */
+    body {
+      background-image: url('./static/background.jpg');
+      background-size: cover;
+      padding: 20px;
+      color: #ff0000;
+    }
+
+    h1, h2 {
+      color: white;
+      text-align: center;
+    }
+
+    #url-list, #completed-url-list {
+      list-style-type: none;
+      padding-left: 0;
+      color: white;
+    }
+
+    #start-download-btn {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Downloader Queue Vimm's Lair Test Server</h1>
+
+    <form id="url-form">
+      <div class="form-group">
+        <label for="url-input">Enter URLs (one per line, up to 40 URLs):</label>
+        <textarea class="form-control" name="urls" id="url-input" rows="5"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="add-to-queue-btn">Add to Queue</button>
+    </form>
+
+    <h2>URLs in Queue:</h2>
+    <ul id="url-list"></ul>
+
+    <h2>Completed URLs:</h2>
+    <ul id="completed-url-list"></ul>
+
+    <button id="start-download-btn" class="btn btn-success btn-block" disabled>Start Download</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+
+  <script>
+// Function to create a list item and append it to a list
+function createListItem(list, url, filename) {
+    console.log('Creating list item for URL:', url);
+    const listItem = document.createElement('li');
+    listItem.textContent = filename ? url + ' (' + filename + ')' : url;
+    list.appendChild(listItem);
+    console.log('List item created and appended to list.');
+}
+
+
+// Function to handle form submission
+function handleSubmit(event) {
+    event.preventDefault(); // Prevent form from submitting and page refresh
+
+    const urlInput = document.getElementById('url-input');
+    const urlList = document.getElementById('url-list');
+
+    // Split the input value by new lines and remove empty lines
+    const urls = urlInput.value.split('\n').filter(url => url.trim() !== '');
+
+    // Clear the input field
+    urlInput.value = '';
+
+    // Clear the URL list
+    urlList.innerHTML = '';
+
+    // Display the URLs in the list
+    urls.forEach(url => createListItem(urlList, url));
+
+    // Send the URLs to the backend (Python) script
+    fetch('/addurl', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // Set the Content-Type header
+        },
+        body: JSON.stringify({ urls: urls }) // Pass the formData directly as the body
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        // Enable the Start Download button if there are URLs in the queue
+        if (data.message === 'URLs added to the queue.') {
+            document.getElementById('start-download-btn').disabled = false;
+            // Clear the URL list
+            urlList.innerHTML = '';
+            // Display the URLs in the list
+            data.queued_urls.forEach(url => createListItem(urlList, url));
+        }
+    })
+    .catch(error => console.error(error));
+}
+
+// Add event listener to the form
+const form = document.getElementById('url-form');
+form.addEventListener('submit', handleSubmit);
+
+// Function to update the URL lists
+function updateURLLists(data) {
+    console.log('Received data to update URL lists:', data);
+
+    const urlList = document.getElementById('url-list');
+    const completedURLList = document.getElementById('completed-url-list');
+
+    // Clear the URL lists
+    console.log('Clearing URL lists...');
+    urlList.innerHTML = '';
+    completedURLList.innerHTML = '';
+    console.log('URL lists cleared.');
+
+    // Update the URL list
+    console.log('Updating URL list...');
+    data.queued_urls.forEach(url => createListItem(urlList, url));
+    console.log('URL list updated.');
+
+    // Update the completed URL list
+    console.log('Updating completed URL list...');
+    data.completed_urls.forEach(entry => createListItem(completedURLList, entry.url, entry.filename));
+    console.log('Completed URL list updated.');
+
+    // Enable the Start Download button if there are URLs in the queue
+    if (data.queued_urls.length > 0) {
+        console.log('Enabling Start Download button...');
+        document.getElementById('start-download-btn').disabled = false;
+        console.log('Start Download button enabled.');
+    }
+}
+
+function handleStartDownload(event) {
+    event.preventDefault();  // Prevent form submission and page refresh
+
+    // Disable the Start Download button
+    document.getElementById('start-download-btn').disabled = true;
+
+    // Get the URLs from the URL list
+    const urlListItems = document.querySelectorAll('#url-list li');
+    const urls = Array.from(urlListItems).map(item => item.textContent);
+
+    // Start the WebSocket if it's not already running
+    if (!socket.connected) {
+        socket.connect();
+        // Wait for the connection to be established before emitting 'start_download'
+        socket.on('connect', function() {
+            socket.emit('start_download', { urls: urls });
+        });
+    } else {
+        // Emit the 'start_download' event with the URLs data
+        socket.emit('start_download', { urls: urls });
+    }
+
+    // Clear the URL input field
+    const urlInput = document.getElementById('url-input');
+    urlInput.value = '';
+}
+
+
+// Add event listener to the Start Download button
+const startDownloadBtn = document.getElementById('start-download-btn');
+startDownloadBtn.addEventListener('click', handleStartDownload);
+
+// Connect to the WebSocket server
+const socket = io();
+let isReadyEmitted = false;
+
+socket.on('connect', function() {
+    console.log('Connected to server');
+    // Emit a 'ready' event after connection
+    socket.emit('ready');
+    isReadyEmitted = true;
+});
+
+
+// Handle initial data event
+socket.on('initial_data', function(data) {
+    // Check if the client is ready
+    if (isReadyEmitted) {
+        console.log('Received initial data:', data);
+        updateURLLists(data);
+    } else {
+        console.error('Received initial data before client was ready.');
+    }
+});
+
+// Handle download error event
+socket.on('download_error', function(error) {
+    console.error('Download error:', error);
+    alert('An error occurred during the download process.');
+});
+
+// Handle update_completed event
+socket.on('update_completed', function(data) {
+    console.log('update_completed event received:', data);
+    console.log('isReadyEmitted:', isReadyEmitted);
+
+    // Check if the client is ready
+    if (isReadyEmitted) {
+        console.log('Client is ready. Updating URL lists.');
+        updateURLLists(data);
+    } else {
+        console.error('Received update_completed before client was ready.');
+    }
+});
+
+</script>
+
+</body>
+</html>

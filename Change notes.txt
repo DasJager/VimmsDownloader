@@ -1,0 +1,45 @@
+in your HTML snippet for the download manager, I don't see any elements with the state attribute. You may need to modify 
+the function based on the actual HTML structure of the downloads list in your application.
+
+When you queue more than one link after the 1st download the link list is not updated it only updates when every single 
+link in the queue list is finished downloading need to make changes so that after each download url list update is 
+sent to update the position of the finished download
+
+
+https://vimm.net/vault/15239
+https://vimm.net/vault/16121
+https://vimm.net/vault/16068
+https://vimm.net/vault/16067
+https://vimm.net/vault/16059
+https://vimm.net/vault/15773
+https://vimm.net/vault/15509
+https://vimm.net/vault/15360
+https://vimm.net/vault/15356
+https://vimm.net/vault/15909
+https://vimm.net/vault/15898
+https://vimm.net/vault/15793
+https://vimm.net/vault/15346
+https://vimm.net/vault/15259
+https://vimm.net/vault/15305
+https://vimm.net/vault/16161
+https://vimm.net/vault/15515
+https://vimm.net/vault/15255
+https://vimm.net/vault/15526
+https://vimm.net/vault/15527
+
+https://vimm.net/vault/15439
+https://vimm.net/vault/15528
+
+
+
+
+
+
+Smaller games for testing purposes 
+
+https://vimm.net/vault/15152
+https://vimm.net/vault/15151
+
+
+
+https://vimm.net/vault/15812
