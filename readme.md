@@ -29,6 +29,8 @@ Chrome WebDriver
 
 **1. Create the Database & Tables:
 **
+
+
 CREATE DATABASE queue;
 
 USE queue;
