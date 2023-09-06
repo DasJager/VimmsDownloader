@@ -51,6 +51,10 @@ CREATE TABLE completed_urls (
 
 **3. Set up a Virtual Environment:**
 
+python -m venv venv
+
+
+venv\Scripts\Activate
 
 **4.Install Required Packages:**
     pip install -r requirements.txt
