@@ -23,7 +23,7 @@ MySQL database
 
 Python 3.x
 
-Chrome WebDriver
+Chrome WebDriver - Chrome is already included as this is a some what stand alone package
 
 **Steps:**
 
