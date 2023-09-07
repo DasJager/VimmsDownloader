@@ -1,5 +1,5 @@
 # Security Policy
 
-## Supported Versions
+## Versions with Security Support
 
-None currently have security support
+At present, there are no versions that are under active security support.
