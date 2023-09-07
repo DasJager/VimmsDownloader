@@ -1,5 +1,5 @@
 **Vimm's Lair Downloader Queue Server**
-A Flask-based server application that interfaces with a Selenium WebDriver to automate downloading games from Vimm's Lair. The application maintains a queue of URLs and a record of completed downloads. I would appreciate if anyone who forks this project to keep the core values alive which include but are not limited to keep the ads viewable and ensue that vimms gets real views so they do not lose any profit from ad revenue. Please respect vimms 1 download session per person as I have develpoed this script to do, please do not use any proxy services. As this will most likely it would rob vimms of their ad revenue. 
+A Flask-based server application that interfaces with a Selenium WebDriver to automate downloading games from Vimm's Lair. The application maintains a queue of URLs and a record of completed downloads. I would appreciate if anyone who forks/clones this project to keep the core values alive which include but are not limited to keep the ads viewable and ensue that vimms gets real views so they do not lose any profit from ad revenue. Please respect vimms 1 download session per person as I have develpoed this script to do, please do not use any proxy services. As this will most likely it would rob vimms of their ad revenue. 
 
 **Features:**
 
