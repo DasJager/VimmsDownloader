@@ -24,7 +24,10 @@ MySQL database - I recommend Xampp as it is the easiest to use and this is not a
 [Python 3.x](https://www.python.org/downloads/)
 
 
-Chrome WebDriver - Chrome is already included as this is a some what stand alone package
+Chrome WebDriver - Chrome needs to be downloaded download it from [MEGA](https://mega.nz/file/PV9kiIDS#nRcK5X83-7tw-q_olfu6EufI5PBnD2-Que5rh1MhADA) I have self hosted this to verify that there are no viruses I dislike viruses
+
+
+![download and extract](https://github.com/DasJager/VimmsDownloader/blob/main/downloadandextract.gif)
 
 **Steps:**
 
