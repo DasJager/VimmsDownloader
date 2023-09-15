@@ -29,6 +29,10 @@ Chrome WebDriver - Chrome needs to be downloaded download it from [MEGA](https:/
 
 ![download and extract](https://github.com/DasJager/VimmsDownloader/blob/main/downloadandextract.gif)
 
+1. you need to download from MEGA
+2. extract into your root dir
+3. make sure that the folder is the same as mine or else it wont work
+
 **Steps:**
 
 **1. Create the Database & Tables:
